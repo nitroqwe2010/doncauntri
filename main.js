@@ -1,32 +1,49 @@
-// // let buton1 = document.querySelector('button')
-// // let buton2 = document.querySelector('.button2')
-// // let span = document.querySelector ('span')
-// // buton2.addEventListener( "click", () => {
+// // Counter variable to store the current value
+// let counter = 0;
 
-// //     if ( Number (span.textContent) > 0) {
-// //         span.textContent = Number (span.textContent) + 1
-// //     }
-// // })
+// // Elements for displaying counter value and buttons
+// const counterValue = document.getElementById("counterValue");
+// const addButton = document.getElementById("addButton");
+// const subtractButton = document.getElementById("subtractButton");
 
-// // buton1.addEventListener( "click", () => {
-// //     if (Number (span.textContent) > 100) {
-// //         span.textContent = Number (span.textContent) - 1  
-// //     }
+// // Update counter value on the screen
+// function updateCounter() {
+//     counterValue.textContent = counter;
 
-// // })
-// let count = 0;
+//     // Agar counter 100ga yetgan bo'lsa, tugmalar faollashmasligi kerak
+//     if (counter >= 100) {
+//         addButton.disabled = true; // "Add" tugmasi faollashadi
+//     } else {
+//         addButton.disabled = false; // "Add" tugmasi faollashadi
+//     }
 
-// const button = document.getElementById("tasbehButton");
-// const countDisplay = document.getElementById("count");
+//     // Agar counter 0ga yetgan bo'lsa, "Subtract" tugmasi faollashmasligi kerak
+//     if (counter <= 0) {
+//         subtractButton.disabled = true; // "Subtract" tugmasi faollashadi
+//     } else {
+//         subtractButton.disabled = false; // "Subtract" tugmasi faollashadi
+//     }
+// }
 
-// button.addEventListener("click", () => {
-//     count++;  // Sonni 1 ga ko'paytirish
-//     countDisplay.textContent = `Son: ${count}`;  // Sonni yangilash
-
-//     document.body.style.backgroundColor = "yellow";  // Orqa fon sariq bo'ladi
+// // Add 1 to the counter
+// addButton.addEventListener("click", () => {
+//     if (counter < 100) { // Faqat counter 100dan kichik bo'lsa qo'shish mumkin
+//         counter++;
+//     }
+//     updateCounter();
 // });
 
-// Counter variable to store the current value
+// // Subtract 1 from the counter
+// subtractButton.addEventListener("click", () => {
+//     if (counter > 0) { // Faqat counter 0dan katta bo'lsa ayirish mumkin
+//         counter--;
+//     }
+//     updateCounter();
+// });
+
+// // Initial counter value update
+// updateCounter();
+    // Counter variable to store the current value
 let counter = 0;
 
 // Elements for displaying counter value and buttons
@@ -37,18 +54,37 @@ const subtractButton = document.getElementById("subtractButton");
 // Update counter value on the screen
 function updateCounter() {
     counterValue.textContent = counter;
+
+    // Agar counter 100ga yetgan bo'lsa, tugmalar faollashmasligi kerak
+    if (counter >= 100) {
+        addButton.disabled = false; // "Add" tugmasi faollashadi
+    } else {
+        addButton.disabled = false; // "Add" tugmasi faollashadi
+    }
+
+    // Agar counter 0ga yetgan bo'lsa, "Subtract" tugmasi faollashmasligi kerak
+    if (counter <= 0) {
+        subtractButton.disabled = false; // "Subtract" tugmasi faollashadi
+    } else {
+        subtractButton.disabled = false; // "Subtract" tugmasi faollashadi
+    }
 }
 
 // Add 1 to the counter
 addButton.addEventListener("click", () => {
-    counter++;
+    if (counter < 100) { // Faqat counter 100dan kichik bo'lsa qo'shish mumkin
+        counter++;
+    }
     updateCounter();
 });
 
-// Subtract 1 from the counter, but don't go below 0
+// Subtract 1 from the counter
 subtractButton.addEventListener("click", () => {
-    if (counter > 0) {
+    if (counter > 0) { // Faqat counter 0dan katta bo'lsa ayirish mumkin
         counter--;
-        updateCounter();
     }
+    updateCounter();
 });
+
+// Initial counter value update
+updateCounter();
